@@ -37,7 +37,8 @@ function(add_module lib)
   endif()
   if(ENABLE_STATIC)
     add_library(${lib}_static STATIC ${ARGN})
-    set_target_properties(${lib}_static PROPERTIES OUTPUT_NAME ${lib})
+    set_target_properties(${lib}_static PROPERTIES OUTPUT_NAME ${lib}
+                                                   POSITION_INDEPENDENT_CODE ON)
   endif()
 endfunction()
 

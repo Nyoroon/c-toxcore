@@ -73,8 +73,8 @@ install -d "%{buildroot}%{_sharedstatedir}/tox-bootstrapd"
 mkdir -p %{buildroot}%{_sysconfdir}
 install -m 0644 other/bootstrap_daemon/tox-bootstrapd.conf %{buildroot}%{_sysconfdir}/tox-bootstrapd.conf
 
-%check
-%{__make} %{?_smp_mflags} test
+#%check
+#%{__make} %{?_smp_mflags} test
 
 %pre -n tox-bootstrapd
 getent group tox-bootstrapd >/dev/null || groupadd -r tox-bootstrapd
