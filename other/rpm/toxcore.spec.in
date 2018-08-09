@@ -4,29 +4,29 @@
 %define shortcommit %(c=%{commit}; echo ${c:0:7})
 %endif
 
-Name:           @PROJECT_NAME@
-Version:        @PROJECT_VERSION@
-Release:        1%{?dist}
-Summary:        All-in-one secure communication platform
+Name:		@PROJECT_NAME@
+Version:	@PROJECT_VERSION@
+Release:	1%{?dist}
+Summary:	All-in-one secure communication platform
 
-License:        GPLv3
-URL:            https://github.com/TokTok/%{full_name}
+License:	GPLv3
+URL:		https://github.com/TokTok/%{full_name}
 %if "%{commit}" == "0"
-Source0:        https://github.com/TokTok/%{full_name}/archive/v%{version}.tar.gz
+Source0:	%{url}/archive/v%{version}.tar.gz
 %else
-Source0:        https://github.com/TokTok/%{full_name}/archive/%{commit}/%{full_name}-%{shortcommit}.tar.gz
+Source0:	%{url}/archive/%{commit}/%{full_name}-%{shortcommit}.tar.gz
 %endif
 
 # See https://fedoraproject.org/wiki/Changes/Remove_GCC_from_BuildRoot
-BuildRequires: gcc
-BuildRequires: gcc-c++
+BuildRequires:	gcc
+BuildRequires:	gcc-c++
 
-BuildRequires:  cmake
-BuildRequires:  libvpx-devel
-BuildRequires:  opus-devel
-BuildRequires:  libsodium-devel
-BuildRequires:  libconfig-devel
-BuildRequires:  systemd-units
+BuildRequires:	cmake
+BuildRequires:	libvpx-devel
+BuildRequires:	opus-devel
+BuildRequires:	libsodium-devel
+BuildRequires:	libconfig-devel
+BuildRequires:	systemd-units
 
 %description
 With the rise of governmental monitoring programs, Tox, a FOSS initiative, aims
@@ -34,24 +34,24 @@ to be an easy to use, all-in-one communication platform that ensures their users
 full privacy and secure message delivery.
 
 %package devel
-Summary:        Development files for @PROJECT_NAME@
-Requires:       %{name} = %{version}-%{release}
+Summary:	Development files for %{name}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Development package for @PROJECT_NAME@
+Development package for %{name}
 
 %package static
-Summary:        @PROJECT_NAME@ static libraries
-Requires:       %{name}-devel = %{version}-%{release}
+Summary:	%{name} static libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-@PROJECT_NAME@ static libraries
+%{name} static libraries
 
 %package -n tox-bootstrapd
-Summary:        Tox DHT bootstrap daemon.
-Requires:       %{name} = %{version}-%{release}
-Requires(pre):  shadow-utils
-Requires(post): systemd-units
+Summary:	Tox DHT bootstrap daemon.
+Requires:	%{name} = %{version}-%{release}
+Requires(pre):	shadow-utils
+Requires(post):	systemd-units
 Requires(preun): systemd-units
 Requires(postun): systemd-units
 
