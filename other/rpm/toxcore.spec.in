@@ -17,6 +17,10 @@ Source0:        https://github.com/TokTok/%{full_name}/archive/v%{version}.tar.g
 Source0:        https://github.com/TokTok/%{full_name}/archive/%{commit}/%{full_name}-%{shortcommit}.tar.gz
 %endif
 
+# See https://fedoraproject.org/wiki/Changes/Remove_GCC_from_BuildRoot
+BuildRequires: gcc
+BuildRequires: gcc-c++
+
 BuildRequires:  cmake
 BuildRequires:  libvpx-devel
 BuildRequires:  opus-devel
